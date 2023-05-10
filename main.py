@@ -3,16 +3,17 @@ from src.menu import *
 
 pygame.init()
 
-res = (1280,720)
+res = (1281, 720)
 screen = pygame.display.set_mode(res)
 width = screen.get_width()
 height = screen.get_height()
-pygame.display.set_caption('bac fighter')
-  
+background = pygame.image.load("res/decoration-salle-de-classe1281x720.jpg")
+pygame.display.set_caption("bac fighter")
+
 menuRunning = True
 clock = pygame.time.Clock()
 
-    
+
 while menuRunning:
     mouse = pygame.mouse.get_pos()
     for event in pygame.event.get():
@@ -20,22 +21,18 @@ while menuRunning:
             menuRunning = False
         menuEvent = handle_main_menu(event, width, height, mouse)
         if menuEvent == "quit":
-            pygame.quit()
-        if menuEvent == 'play':
+            quit(1)
+        if menuEvent == "play":
             menuRunning = False
 
-    clock.tick(60)
-        # fills the screen with a color 
-    screen.fill((0,0,0))
-      
+    clock.tick(61)
+
     # stores the (x,y) coordinates into
     # the variable as a tuple
-
+    screen.blit(background, background.get_rect())
     draw_main_menu(screen, mouse, width, height)
 
-
-      
-    # updates the frames of the game 
+    # updates the frames of the game
     pygame.display.update()
-    
+
 pygame.quit()
