@@ -15,6 +15,7 @@ class Player(pygame.sprite.Sprite):
     self.rect = self.image.get_rect() # les dimensions de l'image
     self.rect.x = position[0]
     self.rect.y = position[1]
+    self.image = image
     
 
   def moove(self):
