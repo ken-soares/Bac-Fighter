@@ -18,7 +18,7 @@ class Player(pygame.sprite.Sprite):
     self.image = image
     
 
-  def moove(self):
+  def move(self):
     if self.pvs[1]==2000:
       if pygame.event.key==K_z:
         self.rect.y-=25
