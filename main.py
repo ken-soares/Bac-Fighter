@@ -23,7 +23,7 @@ while menuRunning:
         if menuEvent == "quit":
             quit(1)
         if menuEvent == "play":
-            menuRunning = False
+            Game()  
 
     clock.tick(60)
 
@@ -34,5 +34,5 @@ while menuRunning:
 
     # updates the frames of the game
     pygame.display.update()
-Game()   
+ 
 pygame.quit()
