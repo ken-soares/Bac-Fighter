@@ -5,12 +5,11 @@ from random import *
 pygame.init()
 
 def collision(Eleve, Prof):
-    if Prof.rect.x>Eleve.rect.x:
-      return False
-    elif Eleve.rect.x<Prof.rect.x:
-      return False
-    else:
-      return True
+  if abs(Prof.rect.x-Eleve.rect.x)<=100:
+    return True
+  else:
+    return False
+
 
 def attack_random():
   coup = 0
