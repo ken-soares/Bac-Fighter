@@ -1,6 +1,6 @@
 import pygame
 from src.menu import *
-from game import *
+from src.game import *
 
 pygame.init()
 
