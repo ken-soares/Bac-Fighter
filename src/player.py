@@ -1,6 +1,6 @@
 #### attributs: pv ; pvmax
 #### methodes: moove ; attack ; collision
-
+from interactions import *
 import pygame 
 from pygame.locals import K_UP,K_RIGHT,K_LEFT,K_z,K_q,K_d,K_RSHIFT,K_LSHIFT
 from random import *
@@ -23,7 +23,8 @@ class Player(pygame.sprite.Sprite):
       if pygame.event.key==K_z:
         self.rect.y-=25
       elif pygame.event.key==K_d:
-        self.rect.x+=10
+        if not collision(Prof,Eleve):
+          self.rect.x+=10
       elif pygame.event.key==K_q:
         self.rect.x-=10
     else:
@@ -32,7 +33,8 @@ class Player(pygame.sprite.Sprite):
       elif pygame.event.key==K_RIGHT:
         self.rect.x+=10
       elif pygame.event.key==K_LEFT:
-        self.rect.x-=10
+        if not collision(Prof,Eleve):
+          self.rect.x-=10
 
   def draw_player(self,scrn):
     scrn.blit(self.image,(self.rect.x,self.rect.y)) 
