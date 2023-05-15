@@ -1,5 +1,5 @@
-from player import Player
-from interactions import *
+from .player import Player
+from .interactions import *
 
 def Game():
   Eleve=Player(20, "../res/Eleve_Pose1.png",(1080,580))
@@ -8,5 +8,4 @@ def Game():
     Eleve.move()
     Prof.move()
     attack(Eleve,Prof)
-    
     
