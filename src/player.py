@@ -21,8 +21,6 @@ class Player(pygame.sprite.Sprite):
     
 
   def move(self):
-    for event in pygame.event.get():
-      if event.type == pygame.KEYDOWN:
         if self.pvs[1]==2000:
           if event.key==K_z:
             self.rect.y-=25
