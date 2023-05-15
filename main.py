@@ -1,5 +1,6 @@
 import pygame
 from src.menu import *
+from game import *
 
 pygame.init()
 
@@ -33,5 +34,5 @@ while menuRunning:
 
     # updates the frames of the game
     pygame.display.update()
-
+game()   
 pygame.quit()
