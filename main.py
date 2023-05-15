@@ -7,12 +7,11 @@ res = (1281, 720)
 screen = pygame.display.set_mode(res)
 width = screen.get_width()
 height = screen.get_height()
-background = pygame.image.load("res/decoration-salle-de-classe1281x720.jpg")
+background = pygame.image.load("res/decoration-salle-de-classe1280x720.jpg")
 pygame.display.set_caption("bac fighter")
 
 menuRunning = True
 clock = pygame.time.Clock()
-
 
 while menuRunning:
     mouse = pygame.mouse.get_pos()
@@ -25,7 +24,7 @@ while menuRunning:
         if menuEvent == "play":
             menuRunning = False
 
-    clock.tick(61)
+    clock.tick(60)
 
     # stores the (x,y) coordinates into
     # the variable as a tuple
