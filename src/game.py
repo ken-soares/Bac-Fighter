@@ -7,5 +7,6 @@ def Game():
   while True:
     Eleve.move()
     Prof.move()
-    collision(Eleve,Prof)
     attack(Eleve,Prof)
+    
+    
