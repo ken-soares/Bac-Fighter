@@ -26,10 +26,12 @@ def attack_random():
   
   
 def attack(Eleve, Prof):
-  if pygame.event.key == K_LSHIFT:
-    if abs(Prof.rect.x - Eleve.rect.x) < 80 and abs(Prof.rect.y - Eleve.rect.y)< 20:
-      Eleve.pvs[0] -= attack_random()
-  if pygame.event.key == K_RSHIFT:
-    if abs(Prof.rect.x - Eleve.rect.x) < 80 and abs(Prof.rect.y - Eleve.rect.y)< 20:
-      Prof.pvs[0] -= attack_random()*100
-  return 1
+    for event in pygame.event.get():
+      if event.type == pygame.KEYDOWN:
+        if event.key == K_LSHIFT:
+          if abs(Prof.rect.x - Eleve.rect.x) < 80 and abs(Prof.rect.y - Eleve.rect.y)< 20:
+            Eleve.pvs[0] -= attack_random()
+        if event.key == K_RSHIFT:
+          if abs(Prof.rect.x - Eleve.rect.x) < 80 and abs(Prof.rect.y - Eleve.rect.y)< 20:
+            Prof.pvs[0] -= attack_random()*100
+        return 0
