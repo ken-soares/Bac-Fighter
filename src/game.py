@@ -8,3 +8,4 @@ def Game():
     Eleve.move()
     Prof.move()
     collision(Eleve,Prof)
+    attack(Eleve,Prof)
