@@ -12,8 +12,8 @@ class Player(pygame.sprite.Sprite):
   def __init__(self,pvmax,image, position): # position tuple (x,y)
     super().__init__()
     self.pvs = (pvmax,pvmax) # (pv , pvmax)
-    self.image = image
-    self.rect = self.image.get_rect() # les dimensions de l'image
+    self.img = pygame.image.load(image).convert()
+    self.rect = self.img.get_rect() # les dimensions de l'image
     self.rect.x = position[0]
     self.rect.y = position[1]
 
