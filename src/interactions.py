@@ -25,7 +25,7 @@ def attack_random():
   return coup
   
   
-def attack(Eleve, Prof):
+def attack(Eleve, Prof, event):
   if event.key == K_LSHIFT:
     if abs(Prof.rect.x - Eleve.rect.x) < 80 and abs(Prof.rect.y - Eleve.rect.y)< 20:
       Eleve.pvs[0] -= attack_random()
