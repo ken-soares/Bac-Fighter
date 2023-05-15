@@ -34,5 +34,5 @@ while menuRunning:
 
     # updates the frames of the game
     pygame.display.update()
-game()   
+Game()   
 pygame.quit()
