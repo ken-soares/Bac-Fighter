@@ -1,6 +1,6 @@
 #### attributs: pv ; pvmax
 #### methodes: moove ; attack ; collision
-from interactions import *
+from .interactions import *
 import pygame 
 from pygame.locals import K_UP,K_RIGHT,K_LEFT,K_z,K_q,K_d,K_RSHIFT,K_LSHIFT
 from random import *
@@ -12,10 +12,12 @@ class Player(pygame.sprite.Sprite):
   def __init__(self,pvmax,image, position): # position tuple (x,y)
     super().__init__()
     self.pvs = (pvmax,pvmax) # (pv , pvmax)
+    self.image = image
     self.rect = self.image.get_rect() # les dimensions de l'image
     self.rect.x = position[0]
     self.rect.y = position[1]
-    self.image = image
+
+
     
 
   def move(self):
