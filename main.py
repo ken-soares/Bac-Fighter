@@ -2,6 +2,9 @@ import pygame
 from src.menu import *
 from src.game import *
 
+pygame.mixer.init()
+pygame.mixer.music.load('res/musique2.mp3')
+
 pygame.init()
 
 res = (1281, 720)
@@ -14,16 +17,18 @@ pygame.display.set_caption("bac fighter")
 menuRunning = True
 clock = pygame.time.Clock()
 
+pygame.mixer.music.play()
+
 while menuRunning:
     mouse = pygame.mouse.get_pos()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            menuRunning = False
+            quit(0)
         menuEvent = handle_main_menu(event, width, height, mouse)
         if menuEvent == "quit":
-            quit(1)
+            quit(0)
         if menuEvent == "play":
-            Game()  
+            menuRunning=False 
 
     clock.tick(60)
 
@@ -34,5 +39,7 @@ while menuRunning:
 
     # updates the frames of the game
     pygame.display.update()
- 
-pygame.quit()
+
+Game(screen) 
+
+pygame.mixer.music.stop()
