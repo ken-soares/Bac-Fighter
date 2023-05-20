@@ -31,15 +31,14 @@ class Player(pygame.sprite.Sprite):
           self.rect.x+=10
       elif event.key==K_q:
         self.rect.x-=10
-      else:
-        if self.name=="Eleve":
-          if event.key==K_UP:
-            self.rect.y-=25
-          elif event.key==K_RIGHT:
-            self.rect.x+=10
-          elif event.key==K_LEFT:
-            if not collision(Prof,Eleve):
-              self.rect.x-=10
+    else:
+      if event.key==K_UP:
+        self.rect.y-=25
+      elif event.key==K_RIGHT:
+        self.rect.x+=10
+      elif event.key==K_LEFT:
+        if not collision(Prof,Eleve):
+          self.rect.x-=10
 
   def draw_player(self,scrn):
     scrn.blit(self.img,(self.rect.x,self.rect.y)) 
