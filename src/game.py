@@ -28,7 +28,6 @@ def Game(screen):
 
         # utile pour les déplacements
         clock = pygame.time.Clock()
-        dt = clock.tick(60)
 
         screen.blit(background, background.get_rect())
         screen.blit(profHP, (30, 10))
@@ -37,9 +36,8 @@ def Game(screen):
         Prof.draw_player(screen)
         pygame.display.flip()
 
-        Eleve.move(Prof, Eleve, dt)
-        Prof.move(Prof, Eleve, dt)
-
+        Eleve.move(Prof, Eleve)
+        Prof.move(Prof, Eleve)
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 attack(Eleve, Prof, event)
@@ -49,3 +47,5 @@ def Game(screen):
             return "Student"
         elif Prof.pvs[0] != 0 and Eleve.pvs[0] <= 0:
             return "Prof"
+
+        clock.tick(60)

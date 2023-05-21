@@ -17,24 +17,38 @@ class Player(pygame.sprite.Sprite):
         self.rect.x = position[0]
         self.rect.y = position[1]
 
-    def move(self, Prof, Eleve, dt):
+        self.jump_height = 20
+        self.velocity = self.jump_height
+        self.jumping = False
+
+    def move(self, Prof, Eleve):
         key_input = pygame.key.get_pressed()
+
+        gravity = 1
+
         if self.pvs[1] == 2000:
             if key_input[pygame.K_z]:
-                self.rect.y -= 2 * dt
-            elif key_input[pygame.K_d]:
+                self.jumping = True
+            if key_input[pygame.K_d]:
                 if not collision(Prof, Eleve):
-                    self.rect.x += 1 * dt
-            elif key_input[pygame.K_q]:
-                self.rect.x -= 1 * dt
+                    self.rect.x += 10
+            if key_input[pygame.K_q]:
+                self.rect.x -= 10
         else:
             if key_input[pygame.K_o]:
-                self.rect.y -= 2 * dt
+                self.jumping = True
             elif key_input[pygame.K_m]:
-                self.rect.x += 1 * dt
+                self.rect.x += 10
             elif key_input[pygame.K_k]:
                 if not collision(Prof, Eleve):
-                    self.rect.x -= 1 * dt
+                    self.rect.x -= 10
+
+        if self.jumping:
+            self.rect.y -= self.velocity
+            self.velocity -= gravity
+            if self.velocity < -self.jump_height:
+                self.jumping = False
+                self.velocity = self.jump_height
 
     def draw_player(self, scrn):
         scrn.blit(self.img, (self.rect.x, self.rect.y))
