@@ -12,6 +12,7 @@ bigFont = pygame.font.SysFont("Arial", 45)
 quit_text = smallFont.render("quit", True, color)
 play_text = smallFont.render("play", True, color)
 bac_fighter_text = bigFont.render("Bac-Fighter", True, color)
+mumu_inc = smallFont.render("A game by MuMu Inc.", True, color_dark)
 
 
 def draw_main_menu(screen, mouse, width, height):
@@ -31,6 +32,7 @@ def draw_main_menu(screen, mouse, width, height):
 
     # superimposing the text onto our button
     screen.blit(bac_fighter_text, ((width - 140) / 2, height / 4))
+    screen.blit(mumu_inc, ((width - 370, height - 40)))
     screen.blit(quit_text, (width / 2, height / 2))
     screen.blit(play_text, (width / 2, 300))
 
@@ -50,8 +52,8 @@ def handle_main_menu(event, width, height, mouse):
 def handle_game_over(winner, screen):
     winner_text = smallFont.render(f"{winner} won!", True, color)
     return_text = smallFont.render(f"Press ESC to quit", True, color)
-    screen.blit(winner_text, (550, 180))
-    screen.blit(return_text, (470, 240))
+    screen.blit(winner_text, (250, 180))
+    screen.blit(return_text, (250, 240))
     pygame.display.flip()
     while True:
         for event in pygame.event.get():

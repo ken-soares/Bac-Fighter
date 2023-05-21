@@ -28,15 +28,15 @@ def attack_random():
 def attack(Eleve, Prof, event):
     if event.key == pygame.K_LSHIFT:
         if (
-            abs(Prof.rect.x - Eleve.rect.x) <= 100
-            and abs(Prof.rect.y - Eleve.rect.y) <= 40
+            abs(Prof.rect.x - Eleve.rect.x) <= 120
+            and abs(Prof.rect.y - Eleve.rect.y) <= 60
         ):
             if Eleve.pvs[0] - attack_random() >= 0:
                 Eleve.pvs[0] -= attack_random()
     if event.key == pygame.K_RSHIFT:
         if (
-            abs(Prof.rect.x - Eleve.rect.x) <= 100
-            and abs(Prof.rect.y - Eleve.rect.y) <= 40
+            abs(Prof.rect.x - Eleve.rect.x) <= 120
+            and abs(Prof.rect.y - Eleve.rect.y) <= 60
         ):
             if Prof.pvs[0] - attack_random() >= 0:
                 Prof.pvs[0] -= attack_random() * 100
