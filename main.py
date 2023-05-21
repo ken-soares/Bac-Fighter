@@ -3,7 +3,7 @@ from src.menu import *
 from src.game import *
 
 pygame.mixer.init()
-pygame.mixer.music.load('res/musique2.mp3')
+pygame.mixer.music.load("res/musique2.mp3")
 
 pygame.init()
 
@@ -15,8 +15,6 @@ background = pygame.image.load("res/decoration-salle-de-classe1280x720.jpg")
 pygame.display.set_caption("bac fighter")
 
 menuRunning = True
-clock = pygame.time.Clock()
-
 pygame.mixer.music.play()
 
 while menuRunning:
@@ -28,9 +26,7 @@ while menuRunning:
         if menuEvent == "quit":
             quit(0)
         if menuEvent == "play":
-            menuRunning=False 
-
-    clock.tick(60)
+            menuRunning = False
 
     # stores the (x,y) coordinates into
     # the variable as a tuple
@@ -40,6 +36,6 @@ while menuRunning:
     # updates the frames of the game
     pygame.display.update()
 
-Game(screen) 
 
+Game(screen)
 pygame.mixer.music.stop()
