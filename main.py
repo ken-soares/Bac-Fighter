@@ -7,7 +7,7 @@ pygame.mixer.music.load("res/musique2.mp3")
 
 pygame.init()
 
-res = (1281, 720)
+res = (1280, 720)
 screen = pygame.display.set_mode(res)
 width = screen.get_width()
 height = screen.get_height()
@@ -15,6 +15,8 @@ background = pygame.image.load("res/decoration-salle-de-classe1280x720.jpg")
 pygame.display.set_caption("bac fighter")
 
 menuRunning = True
+
+pygame.mixer.music.stop()
 pygame.mixer.music.play()
 
 while menuRunning:
@@ -37,5 +39,8 @@ while menuRunning:
     pygame.display.update()
 
 
-Game(screen)
-pygame.mixer.music.stop()
+winner = Game(screen)
+handle_game_over(winner, screen)
+
+pygame.quit()
+quit(0)

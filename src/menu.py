@@ -49,12 +49,12 @@ def handle_main_menu(event, width, height, mouse):
 
 def handle_game_over(winner, screen):
     winner_text = smallFont.render(f"{winner} won!", True, color)
-    return_text = smallFont.render(f"SPACE = menu\nESC = quit", True, color)
-    screen.blit(winner_text, (620, 180))
-    screen.blit(return_text, (620, 200))
-    for event in pygame.event.get():
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_SPACE:
-                return True
-            else:
-                return False
+    return_text = smallFont.render(f"Press ESC to quit", True, color)
+    screen.blit(winner_text, (550, 180))
+    screen.blit(return_text, (470, 240))
+    pygame.display.flip()
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    return False
