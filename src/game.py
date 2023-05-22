@@ -40,7 +40,7 @@ def Game(screen):
         Prof.move(Prof, Eleve)
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
-                attack(Eleve, Prof, event)
+                attack(Eleve, Prof, event, screen)
                 if event.key == pygame.K_ESCAPE:
                     quit(0)
         if Prof.pvs[0] <= 0 and Eleve.pvs[0] != 0:
