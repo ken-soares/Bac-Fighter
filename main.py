@@ -29,6 +29,8 @@ while menuRunning:
             quit(0)
         if menuEvent == "play":
             menuRunning = False
+        if menuEvent=="credits":
+            handle_credits_menu(screen)
 
     # stores the (x,y) coordinates into
     # the variable as a tuple
@@ -42,6 +44,8 @@ while menuRunning:
 winner = Game(screen)
 screen.blit(background, background.get_rect())
 handle_game_over(winner, screen)
+
+
 
 pygame.quit()
 quit(0)
