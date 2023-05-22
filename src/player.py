@@ -21,6 +21,10 @@ class Player(pygame.sprite.Sprite):
         self.velocity = self.jump_height
         self.jumping = False
 
+    def set_img(self, image):
+        self.img = pygame.image.load(image).convert_alpha()
+        self.img = pygame.transform.scale(self.img, (200, 200))
+        
     def move(self, Prof, Eleve):
         key_input = pygame.key.get_pressed()
 
@@ -29,17 +33,17 @@ class Player(pygame.sprite.Sprite):
         if self.pvs[1] == 2000:
             if key_input[pygame.K_z]:
                 self.jumping = True
-            if key_input[pygame.K_d]:
+            if key_input[pygame.K_d] and self.rect.x <= 1050:
                 if not collision(Prof, Eleve):
                     self.rect.x += 10
-            if key_input[pygame.K_q]:
+            if key_input[pygame.K_q] and self.rect.x >= 30:
                 self.rect.x -= 10
         else:
             if key_input[pygame.K_o]:
                 self.jumping = True
-            elif key_input[pygame.K_m]:
+            elif key_input[pygame.K_m] and self.rect.x <= 1100:
                 self.rect.x += 10
-            elif key_input[pygame.K_k]:
+            elif key_input[pygame.K_k] and self.rect.x >= 30:
                 if not collision(Prof, Eleve):
                     self.rect.x -= 10
 
