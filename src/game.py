@@ -12,6 +12,8 @@ def Game(screen):
     from .menu import handle_game_over
     Eleve = Player(20, "res/Eleve_Pose1.png", (1030, 470), "Eleve")
     Prof = Player(2000, "res/Prof_Perso1_position1.png", (50, 470), "Prof")
+    
+    quitText = font.render("ESC to ragequit", True, (255,255,255))
 
     while True:
         if Eleve.pvs[0] <= 0:
@@ -31,6 +33,7 @@ def Game(screen):
         clock = pygame.time.Clock()
 
         screen.blit(background, background.get_rect())
+        screen.blit(quitText, (300, 110))
         screen.blit(profHP, (30, 10))
         screen.blit(playerHP, (1120, 10))
         Eleve.draw_player(screen)
