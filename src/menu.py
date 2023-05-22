@@ -1,4 +1,5 @@
 import pygame
+from .game import *
 
 pygame.init()
 # color
@@ -53,6 +54,7 @@ def handle_main_menu(event, width, height, mouse):
             return "play"
         if (width / 2) -38 <= mouse[0] <= (width / 2) +100 and 420-20 <=mouse[1]<= 420+50:
             return "credits"
+            
 credits_contenu = smallFont.render("With the support of : TOURNIER Thibaut as Coach <3", True, color_light)
 credits_contenu1 = smallFont.render("A game by MuMu Inc.", True, color_light)
 credits_contenu2 = smallFont.render("With:", True, color_light)
@@ -61,6 +63,7 @@ credits_contenu4 = smallFont.render("RENAULT Gabriel as Emotional Support Manage
 credits_contenu5 = smallFont.render("PULIERO Mélusine as Project Deputy", True, color_light)
 credits_contenu6 = smallFont.render("MENARD Damien as Physics Manager", True, color_light)
 credits_contenu7 = smallFont.render("JARROUX Océane as Graphics Designer", True, color_light)
+
 def handle_credits_menu(screen):
     print("dans la fonction")
     screen.fill((0,0,0))
@@ -78,12 +81,17 @@ def handle_credits_menu(screen):
 
 def handle_game_over(winner, screen):
     winner_text = smallFont.render(f"{winner} won!", True, color)
-    return_text = smallFont.render(f"Press ESC to quit", True, color)
-    screen.blit(winner_text, (250, 180))
-    screen.blit(return_text, (250, 240))
+    return_text = smallFont.render("Press ESC to quit", True, color)
+    restart_text = smallFont.render("Press ENTER to play again", True, color)
+    screen.blit(winner_text, (250, 150))
+    screen.blit(return_text, (250, 220))
+    screen.blit(restart_text, (250, 260))
     pygame.display.flip()
     while True:
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
-                    return False
+                    pygame.quit()
+                    quit(0)
+                if event.key == pygame.K_RETURN:
+                    Game(screen)
