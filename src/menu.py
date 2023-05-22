@@ -63,20 +63,20 @@ credits_contenu4 = smallFont.render("RENAULT Gabriel as Emotional Support Manage
 credits_contenu5 = smallFont.render("PULIERO Mélusine as Project Deputy", True, color_light)
 credits_contenu6 = smallFont.render("MENARD Damien as Physics Manager", True, color_light)
 credits_contenu7 = smallFont.render("JARROUX Océane as Graphics Designer", True, color_light)
-
+credits_contenu8 = smallFont.render("LE GALLOU William as Professional Noisemaker", True, color_light)
 def handle_credits_menu(screen):
-    print("dans la fonction")
     screen.fill((0,0,0))
     screen.blit(credits_contenu1,(500,100))
-    screen.blit(credits_contenu2,(600,175))
-    screen.blit(credits_contenu3,(360,250))
-    screen.blit(credits_contenu4,(300,325))
-    screen.blit(credits_contenu5,(370,400))
-    screen.blit(credits_contenu6,(370,475))
-    screen.blit(credits_contenu7,(365,550))
-    screen.blit(credits_contenu,(500,670))
+    screen.blit(credits_contenu2,(600,160))
+    screen.blit(credits_contenu3,(360,220))
+    screen.blit(credits_contenu4,(300,280))
+    screen.blit(credits_contenu5,(370,340))
+    screen.blit(credits_contenu6,(370,400))
+    screen.blit(credits_contenu7,(365,460))
+    screen.blit(credits_contenu8,(300,520))
+    screen.blit(credits_contenu,(500,650))
     pygame.display.flip()
-    pygame.time.wait(12000)
+    pygame.time.wait(15000)
 
 
 def handle_game_over(winner, screen):
