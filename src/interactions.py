@@ -82,6 +82,7 @@ def attack_dist(Eleve, Prof, event, screen):
             and abs(Prof.rect.y - Eleve.rect.y) <= 60
         ):
             if Eleve.pvs[0] - attack_random() >= 0:
+                pygame.mixer.Sound("res/woosh.mp3").play()
                 pain = attack_random()
                 Eleve.pvs[0] -= pain
                 if Eleve.rect.x + 300 <= 1100:  
@@ -101,6 +102,7 @@ def attack_dist(Eleve, Prof, event, screen):
             and abs(Prof.rect.y - Eleve.rect.y) <= 60
         ):
             if Prof.pvs[0] - attack_random() >= 0: 
+                pygame.mixer.Sound("res/woosh.mp3").play()
                 pain = attack_random() * 100
                 Prof.pvs[0] -= pain
                 
