@@ -37,13 +37,10 @@ def attack(Eleve, Prof, event, screen):
             if Eleve.pvs[0] - attack_random() >= 0:
                 pain = attack_random()
                 Eleve.pvs[0] -= pain
-                eleve_hurt = font.render(f"-{pain} points!", True, (255,0,0))
-                eleve_subtext = font.render("It's not a sin() curve, it's a pair of boobs!", True, (255,0,0))
-                display_rng = randint(1,11)
-                screen.blit(eleve_hurt, (30,30))
-                if display_rng in [1,2,3]:
-                    screen.blit(eleve_subtext, (30, 60))
-                pygame.display.flip()
+                if Eleve.rect.x + 100 <= 1100:  
+                    Eleve.rect.x += 100
+                else:
+                    Eleve.rect.x = 1100
                 Prof.set_img("res/Prof_Perso1_position1.png")
             else:
                 Eleve.pvs[0] = 0
@@ -59,13 +56,12 @@ def attack(Eleve, Prof, event, screen):
             if Prof.pvs[0] - attack_random() >= 0: 
                 pain = attack_random() * 100
                 Prof.pvs[0] -= pain
-                prof_hurt = font.render(f"-{pain}€!", True, (255,0,0))
-                prof_subtext = font.render("It's not pedagogy, it's somnifere!", True, (255,0,0))
-                display_rng = randint(1,11)
-                screen.blit(prof_hurt, (900, 30))
-                if display_rng in [1,2,3]:
-                    screen.blit(prof_subtext, (900,60))
-                pygame.display.flip()
+                
+                if Prof.rect.x - 100 >= 30:
+                    Prof.rect.x -= 100
+                else:
+                    Prof.rect.x = 30
+                    
                 Prof.set_img("res/Prof_Perso1_position1.png")
             else:
                 Prof.pvs[0] = 0
