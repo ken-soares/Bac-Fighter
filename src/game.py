@@ -9,6 +9,7 @@ font = pygame.font.SysFont("Arial", 25)
 
 
 def Game(screen):
+    from .menu import handle_game_over
     Eleve = Player(20, "res/Eleve_Pose1.png", (1030, 470), "Eleve")
     Prof = Player(2000, "res/Prof_Perso1_position1.png", (50, 470), "Prof")
 
@@ -41,11 +42,14 @@ def Game(screen):
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 attack(Eleve, Prof, event, screen)
+                #attack_dist(Eleve, Prof, event, screen)
                 if event.key == pygame.K_ESCAPE:
                     quit(0)
         if Prof.pvs[0] <= 0 and Eleve.pvs[0] != 0:
-            return "Student"
+            screen.blit(background, background.get_rect())
+            handle_game_over("Student", screen)
         elif Prof.pvs[0] != 0 and Eleve.pvs[0] <= 0:
-            return "Prof"
+            screen.blit(background, background.get_rect())
+            handle_game_over("Prof", screen)
 
         clock.tick(60)
