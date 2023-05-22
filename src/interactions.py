@@ -28,7 +28,7 @@ def attack_random():
 
 
 def attack(Eleve, Prof, event, screen):
-    if event.key == pygame.K_LSHIFT:
+    if event.key == pygame.K_LCTRL:
         Prof.set_img("res/Prof_Perso1_position2.png")
         if (
             abs(Prof.rect.x - Eleve.rect.x) <= 120
@@ -47,7 +47,7 @@ def attack(Eleve, Prof, event, screen):
     else:
         Prof.set_img("res/Prof_Perso1_position1.png")
         
-    if event.key == pygame.K_RSHIFT:
+    if event.key == pygame.K_RCTRL:
         Eleve.set_img("res/Eleve_Pose3.png")
         if (
             abs(Prof.rect.x - Eleve.rect.x) <= 120
@@ -59,6 +59,48 @@ def attack(Eleve, Prof, event, screen):
                 
                 if Prof.rect.x - 100 >= 30:
                     Prof.rect.x -= 100
+                else:
+                    Prof.rect.x = 30
+                    
+                Prof.set_img("res/Prof_Perso1_position1.png")
+            else:
+                Prof.pvs[0] = 0
+    else:
+        Eleve.set_img("res/Eleve_Pose1.png")
+    return 0
+    
+def attack_dist(Eleve, Prof, event, screen):
+    if event.key == pygame.K_a:
+        Prof.set_img("res/Prof_Perso2_position1.png")
+        if (
+            abs(Prof.rect.x - Eleve.rect.x) <= 180
+            and abs(Prof.rect.y - Eleve.rect.y) <= 60
+        ):
+            if Eleve.pvs[0] - attack_random() >= 0:
+                pain = attack_random()
+                Eleve.pvs[0] -= pain
+                if Eleve.rect.x + 300 <= 1100:  
+                    Eleve.rect.x += 300
+                else:
+                    Eleve.rect.x = 1100
+                Prof.set_img("res/Prof_Perso1_position1.png")
+            else:
+                Eleve.pvs[0] = 0
+    else:
+        Prof.set_img("res/Prof_Perso1_position1.png")
+        
+    if event.key == pygame.K_p:
+        Eleve.set_img("res/Eleve_Perso2_Pose1.png")
+        if (
+            abs(Prof.rect.x - Eleve.rect.x) <= 180
+            and abs(Prof.rect.y - Eleve.rect.y) <= 60
+        ):
+            if Prof.pvs[0] - attack_random() >= 0: 
+                pain = attack_random() * 100
+                Prof.pvs[0] -= pain
+                
+                if Prof.rect.x - 300 >= 30:
+                    Prof.rect.x -= 300
                 else:
                     Prof.rect.x = 30
                     
