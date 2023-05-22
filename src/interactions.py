@@ -1,7 +1,9 @@
 import pygame
+import time
 from random import randint
 
 pygame.init()
+font = pygame.font.SysFont("Arial", 28)
 
 
 def collision(Eleve, Prof):
@@ -25,21 +27,48 @@ def attack_random():
     return coup
 
 
-def attack(Eleve, Prof, event):
+def attack(Eleve, Prof, event, screen):
     if event.key == pygame.K_LSHIFT:
+        Prof.set_img("res/Prof_Perso1_position2.png")
         if (
             abs(Prof.rect.x - Eleve.rect.x) <= 120
             and abs(Prof.rect.y - Eleve.rect.y) <= 60
         ):
             if Eleve.pvs[0] - attack_random() >= 0:
-                Eleve.pvs[0] -= attack_random()
+                pain = attack_random()
+                Eleve.pvs[0] -= pain
+                eleve_hurt = font.render(f"-{pain} points!", True, (255,0,0))
+                eleve_subtext = font.render("It's not a sin() curve, it's a pair of boobs!", True, (255,0,0))
+                display_rng = randint(1,11)
+                screen.blit(eleve_hurt, (30,30))
+                if display_rng in [1,2,3]:
+                    screen.blit(eleve_subtext, (30, 60))
+                pygame.display.flip()
+                Prof.set_img("res/Prof_Perso1_position1.png")
+            else:
+                Eleve.pvs[0] = 0
+    else:
+        Prof.set_img("res/Prof_Perso1_position1.png")
+        
     if event.key == pygame.K_RSHIFT:
+        Eleve.set_img("res/Eleve_Pose3.png")
         if (
             abs(Prof.rect.x - Eleve.rect.x) <= 120
             and abs(Prof.rect.y - Eleve.rect.y) <= 60
         ):
-            if Prof.pvs[0] - attack_random() >= 0:
-                Prof.pvs[0] -= attack_random() * 100
+            if Prof.pvs[0] - attack_random() >= 0: 
+                pain = attack_random() * 100
+                Prof.pvs[0] -= pain
+                prof_hurt = font.render(f"-{pain}€!", True, (255,0,0))
+                prof_subtext = font.render("It's not pedagogy, it's somnifere!", True, (255,0,0))
+                display_rng = randint(1,11)
+                screen.blit(prof_hurt, (900, 30))
+                if display_rng in [1,2,3]:
+                    screen.blit(prof_subtext, (900,60))
+                pygame.display.flip()
+                Prof.set_img("res/Prof_Perso1_position1.png")
             else:
                 Prof.pvs[0] = 0
+    else:
+        Eleve.set_img("res/Eleve_Pose1.png")
     return 0
