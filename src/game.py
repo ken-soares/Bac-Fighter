@@ -9,6 +9,7 @@ font = pygame.font.SysFont("Arial", 25)
 
 
 def Game(screen):
+    pygame.mixer.Sound("res/Fight.mp3").play()
     from .menu import handle_game_over
     Eleve = Player(20, "res/Eleve_Pose1.png", (1030, 470), "Eleve")
     Prof = Player(2000, "res/Prof_Perso1_position1.png", (50, 470), "Prof")
