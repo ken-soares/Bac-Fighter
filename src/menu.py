@@ -80,6 +80,7 @@ def handle_credits_menu(screen):
 
 
 def handle_game_over(winner, screen):
+    pygame.mixer.Sound("res/Fired.mp3").play()
     winner_text = smallFont.render(f"{winner} won!", True, color)
     return_text = smallFont.render("Press ESC to quit", True, color)
     restart_text = smallFont.render("Press ENTER to play again", True, color)
