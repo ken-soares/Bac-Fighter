@@ -13,7 +13,7 @@ def Game(screen):
     Eleve = Player(20, "res/Eleve_Pose1.png", (1030, 470), "Eleve")
     Prof = Player(2000, "res/Prof_Perso1_position1.png", (50, 470), "Prof")
     
-    quitText = font.render("ESC to QUIT(git gud LOL)", True, (255,255,255))
+    quitText = font.render("ESC to RAGEQUIT(git gud LOL)", True, (255,255,255))
 
 
     while True:
@@ -48,8 +48,9 @@ def Game(screen):
                 pygame.quit()
                 quit()
             if event.type == pygame.KEYDOWN:
-                attack(Eleve, Prof, event, screen)
                 attack_dist(Eleve, Prof, event, screen)
+                attack(Eleve, Prof, event, screen)
+                
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()
                     quit()
