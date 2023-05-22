@@ -9,12 +9,12 @@ font = pygame.font.SysFont("Arial", 25)
 
 
 def Game(screen):
-    pygame.mixer.Sound("res/Fight.mp3").play()
     from .menu import handle_game_over
     Eleve = Player(20, "res/Eleve_Pose1.png", (1030, 470), "Eleve")
     Prof = Player(2000, "res/Prof_Perso1_position1.png", (50, 470), "Prof")
     
-    quitText = font.render("ESC to ragequit", True, (255,255,255))
+    quitText = font.render("ESC to QUIT(git gud LOL)", True, (255,255,255))
+
 
     while True:
         if Eleve.pvs[0] <= 0:
@@ -44,11 +44,17 @@ def Game(screen):
         Eleve.move(Prof, Eleve)
         Prof.move(Prof, Eleve)
         for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
             if event.type == pygame.KEYDOWN:
                 attack(Eleve, Prof, event, screen)
-                #attack_dist(Eleve, Prof, event, screen)
+                attack_dist(Eleve, Prof, event, screen)
                 if event.key == pygame.K_ESCAPE:
-                    quit(0)
+                    pygame.quit()
+                    quit()
+                if event.key == pygame.K_F11:
+                    screen = pygame.display.set_mode((1280,720), pygame.FULLSCREEN)
         if Prof.pvs[0] <= 0 and Eleve.pvs[0] != 0:
             screen.blit(background, background.get_rect())
             handle_game_over("Student", screen)
