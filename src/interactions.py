@@ -36,6 +36,8 @@ def attack(Eleve, Prof, event, screen):
         ):
             if Eleve.pvs[0] - attack_random() >= 0:
                 pain = attack_random()
+                sound = "res/Douleur"+str(pain)+"eleve.mp3"
+                pygame.mixer.Sound(sound).play()
                 Eleve.pvs[0] -= pain
                 if Eleve.rect.x + 100 <= 1100:  
                     Eleve.rect.x += 100
@@ -54,7 +56,10 @@ def attack(Eleve, Prof, event, screen):
             and abs(Prof.rect.y - Eleve.rect.y) <= 60
         ):
             if Prof.pvs[0] - attack_random() >= 0: 
-                pain = attack_random() * 100
+                p = attack_random()
+                pain = p * 100
+                sound = "res/Douleur"+str(p)+"prof.mp3"
+                pygame.mixer.Sound(sound).play()
                 Prof.pvs[0] -= pain
                 
                 if Prof.rect.x - 100 >= 30:
